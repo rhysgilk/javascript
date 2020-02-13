@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <style>
+        p1 {
+            font-family: Garamond, Baskerville;
+            font-size: 16px;
+        }
+        body {
+            background-color: #DEBB3D;
+        }
+        h1 {
+            text-align: center;
+            color: #800020;
+            font-weight: bold;
+            font-family: fantasy, Stencil Std;
+        }
+        hr {
+            border-top: 2px solid red;
+            border-bottom: 2px solid black;
+        }
+        .category {
+            font-family: Garamond, Baskerville;
+            font-size: 22px;
+            color: black;
+            font-weight: bold;
+        }
+        .discounted {
+            font-family: Garamond, Baskerville;
+            font-size: 20px;
+            color: black;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Joe&#39s Hotdog Stand</h1><hr /><br />
+    <script type="text/javascript">
+        /* Output to user */
+        welcome = "Welcome to Joes Hotdog Stand! Hotdogs cost $3.25, " + 
+                  "fries cost $2.00, and sodas cost $1.50 each.";
+        alert(welcome);
+
+        /* Input from user */
+        hotPrompt = "How many hotdogs would you like?";
+        friesPrompt = "How many fries would you like?";
+        sodaPrompt = "How many sodas would you like?";
+        hotdogs = prompt(hotPrompt);
+        fries = prompt(friesPrompt);
+        sodas = prompt(sodaPrompt);
+
+        /* Calculations */
+        /* Subtotal */
+        subtotal = 0;
+        subtotal += (hotdogs * 3.25);
+        subtotal += (fries * 2.00);
+        subtotal += (sodas * 1.50);
+        runningTotal = subtotal;
+
+        /* Discount */
+        discountApplied = false;
+        if (subtotal >= 20){
+            runningTotal *= .9;
+            discountApplied = true;
+        }
+
+        /* Tax */
+        tax = parseFloat(runningTotal * .0625);
+        tax = tax.toFixed(2);
+        runningTotal = parseFloat(runningTotal + tax);
+        runningTotal = runningTotal.toFixed(2);
+        
+        /* Receipt - Order */
+        document.write("<p1 class='category'>");
+        document.write("Your order: ");
+        document.write("<br /></p1>");
+        receipt = "" + hotdogs + " hotdogs, " + fries + 
+                  " fries, and " + sodas + " sodas. ";
+        document.write("<p1>");
+        document.write(receipt);
+        document.write("<br /><br /></p1>");
+
+        /* Receipt - Subtotal */
+        document.write("<p1 class='category'>");
+        document.write("Your subtotal: ");
+        document.write("<br /></p1>");
+        subtotalReceipt = "$" + subtotal + ". ";
+        document.write("<p1>");
+        document.write(subtotalReceipt);
+        document.write("<br /><br /></p1>");
+
+        /* Receipt - Discount */
+        if (discountApplied){
+            discountReceipt = "Because your subtotal was at least $20, " +
+            "Joe's Special 10% off discount has been applied! ";
+            document.write("<p1 class='discounted'>");
+            document.write(discountReceipt);
+            document.write("<br /><br /></p1>");
+        }
+
+        /* Receipt - Tax */
+        document.write("<p1 class='category'>");
+        document.write("Your tax:");
+        document.write("<br /></p1>");
+        taxReceipt = "$" + tax + ". ";
+        document.write("<p1>");
+        document.write(taxReceipt);
+        document.write("<br /><br /></p1>");
+
+        /* Receipt - Total */
+        document.write("<p1 class='category'>");
+        document.write("Your total is: ");
+        document.write("<br /></p1>");
+        totalReceipt = "$" + runningTotal + ".";
+        document.write("<p1>");
+        document.write(totalReceipt);
+        document.write("<br /><br /></p1>");
+    </script>
+</body>
+</html>
